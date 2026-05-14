@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEROKU FEST 2026 - Cyber Neon Experience</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    /* -----------------------------------------------------------
+       1. CSS RESET & BASE - Estetika Dark Cyber
+       ----------------------------------------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    ::selection {
+      background: rgba(255, 79, 216, 0.3);
+      color: white;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0d0d16;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#ff4fd8, #8b5cf6);
+      border-radius: 10px;
+    }
+
+    body {
+      background:
+        linear-gradient(135deg, rgba(13, 13, 22, 0.95), rgba(20, 10, 35, 0.9)),
+        url('background.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #eee;
+      overflow-x: hidden;
+      padding-top: 80px;
+    }
+
+    /* -----------------------------------------------------------
+       2. REUSABLE COMPONENTS - Neon & Glassmorphism
+       ----------------------------------------------------------- */
+
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    .text-neon-gradient {
+      background: linear-gradient(45deg, #ff4fd8, #8b5cf6, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 15px rgba(255, 79, 216, 0.5));
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 35px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #ff4fd8, #8b5cf6);
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 79, 216, 0.3);
+    }
+
+    .btn:hover {
+      box-shadow: 0 0 25px rgba(255, 79, 216, 0.7);
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      box-shadow: none;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .title h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .title p {
+      color: #aaa;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    /* -----------------------------------------------------------
+       3. SECTIONS STYLING
+       ----------------------------------------------------------- */
+    section {
+      padding: 100px 10%;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 13, 22, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    nav h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    nav ul li a {
+      color: #ccc;
+      text-decoration: none;
+      transition: 0.3s;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    nav ul li a:hover {
+      color: #ff4fd8;
+      text-shadow: 0 0 10px #ff4fd8;
+    }
+
+    header {
+      width: 100%;
+      min-height: 95vh;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      flex-direction: column;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 9vw, 90px);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #ccc;
+      font-size: clamp(16px, 2.5vw, 20px);
+      margin-bottom: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .countdown {
+      padding: 30px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .time-unit {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 15px;
+      min-width: 90px;
+    }
+
+    .time-number {
+      font-size: clamp(30px, 6vw, 50px);
+      font-weight: 800;
+      color: #00d4ff;
+      text-shadow: 0 0 20px #00d4ff;
+    }
+
+    .time-label {
+      font-size: 11px;
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      padding: 40px 30px;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #8b5cf6;
+      box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2);
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%);
+      transform: scale(0);
+      transition: 0.6s ease;
+    }
+
+    .card:hover::after {
+      transform: scale(1);
+    }
+
+    .card h3 {
+      color: #ff4fd8;
+      font-size: 22px;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .card p {
+      color: #bbb;
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .schedule {
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .schedule-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: background 0.3s;
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+    }
+
+    .schedule-item:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .schedule-item strong {
+      font-size: 18px;
+      color: #00d4ff;
+      font-weight: 700;
+    }
+
+    .schedule-item span:last-child {
+      font-size: 16px;
+      color: #eee;
+      font-weight: 500;
+    }
+
+    .ticket-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .ticket {
+      flex: 1;
+      min-width: 300px;
+      max-width: 450px;
+      padding: 50px 40px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .ticket h3 {
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #eee;
+    }
+
+    .price {
+      font-size: 48px;
+      font-weight: 800;
+      color: #00d4ff;
+      margin: 20px 0;
+      text-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+    }
+
+    .ticket p {
+      color: #bbb;
+      font-size: 15px;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .bundle-highlight {
+      border: 2px solid #ff4fd8 !important;
+      box-shadow: 0 0 30px rgba(255, 79, 216, 0.2);
+    }
+
+    .venue-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    .venue-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .venue-info h3 {
+      color: #ff4fd8;
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    .venue-info p {
+      color: #ccc;
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .map-responsive {
+      overflow: hidden;
+      padding-bottom: 60%;
+      position: relative;
+      height: 0;
+      border-radius: 15px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .map-responsive iframe {
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      border: 0;
+      filter: grayscale(1) invert(1) opacity(0.7);
+    }
+
+    /* TAMBAHAN: CSS Section Instagram */
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .ig-item {
+      aspect-ratio: 1/1;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      position: relative;
+      cursor: pointer;
+    }
+
+    .ig-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .ig-item:hover img {
+      transform: scale(1.1) rotate(2deg);
+      filter: brightness(0.7);
+    }
+
+    .ig-item::before {
+      content: 'VIEW';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: 800;
+      letter-spacing: 2px;
+      opacity: 0;
+      transition: 0.3s;
+      z-index: 2;
+      color: #fff;
+    }
+
+    .ig-item:hover::before {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px;
+      color: #666;
+      font-size: 13px;
+      letter-spacing: 1px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    #music-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #09090d;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 1s ease-in-out;
+    }
+
+    #music-overlay h2 {
+      font-size: 40px;
+      letter-spacing: 8px;
+      margin-bottom: 30px;
+      text-shadow: 0 0 20px #ff4fd8;
+    }
+
+    @media (max-width: 900px) {
+      .venue-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      nav ul {
+        display: none;
+      }
+
+      section {
+        padding: 80px 5%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <audio id="myAudio" loop>
+    <source src="lagu.mp3" type="audio/mpeg">
+  </audio>
+
+  <div id="music-overlay">
+    <h2 class="text-neon-gradient">NEROKU FEST</h2>
+    <button class="btn" style="padding: 20px 50px; font-size: 18px;" onclick="startExperience()">Masuk Area
+      Festival</button>
+    <p style="margin-top: 20px; color: #555; font-size: 12px; text-transform: uppercase; letter-spacing: 2px;">Now
+      Playing: FLOW - GO!!!</p>
+  </div>
+
+  <nav class="glass">
+    <h2 class="text-neon-gradient">NEROKU FEST</h2>
+    <ul>
+      <li><a href="#about">Info</a></li>
+      <li><a href="#schedule">Rundown</a></li>
+      <li><a href="#instagram">Instagram</a></li>
+      <li><a href="#ticket">Tiket</a></li>
+      <li><a href="#location">Lokasi</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="hero" data-aos="zoom-in" data-aos-duration="1500">
+      <h1 class="text-neon-gradient">NEROKU FEST<br>2026</h1>
+      <p>Pengalaman Budaya Pop Jepang Paling Energik di Bandung. Musik, Dance, dan Kreativitas Tanpa Batas.</p>
+
+      <div class="countdown glass" id="countdown" data-aos="fade-up" data-aos-delay="400">
+        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #eee;">Menuju Gerbang Neroku
+        </h3>
+        <div class="countdown-timer">
+          <div class="time-unit"><span class="time-number" id="days">00</span><span class="time-label">Hari</span></div>
+          <div class="time-unit"><span class="time-number" id="hours">00</span><span class="time-label">Jam</span></div>
+          <div class="time-unit"><span class="time-number" id="minutes">00</span><span class="time-label">Menit</span>
+          </div>
+          <div class="time-unit"><span class="time-number" id="seconds">00</span><span class="time-label">Detik</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 50px;" data-aos="fade-up" data-aos-delay="600">
+        <a href="#ticket" class="btn">Amankan Tiketmu</a>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="title" data-aos="fade-up">
+      <h2 class="text-neon-gradient">Universe Neroku</h2>
+      <p>Empat pilar keseruan yang menantimu.</p>
+    </div>
+    <div class="about-grid">
+      <div class="card glass" data-aos="fade-right" data-aos-delay="100">
+        <h3>🎤 Anisong</h3>
+        <p>Suarakan jiwamu dalam kompetisi karaoke lagu Anime terbesar musim ini.</p>
+      </div>
+      <div class="card glass" data-aos="fade-right" data-aos-delay="300">
+        <h3>⭐ Performance</h3>
+        <p>Panggung utama yang diguncang oleh Idol Group nasional dan J-Pop lokal.</p>
+      </div>
+      <div class="card glass" data-aos="fade-left" data-aos-delay="100">
+        <h3>💃 Dance</h3>
+        <p>Lepaskan energimu di area Random Play Dance dengan *playlist* Jepang terpanas.</p>
+      </div>
+      <div class="card glass" data-aos="fade-left" data-aos-delay="300">
+        <h3>🛍️ Market</h3>
+        <p>Lengkapi koleksimu: Merchandise Original, Doujinshi, hingga Action Figure langka.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="schedule">
+    <div class="title" data-aos="fade-up">
+      <h2 class="text-neon-gradient">Rundown</h2>
+      <p>Pastikan kamu tidak melewatkan momen ikonik.</p>
+    </div>
+    <div class="schedule glass" data-aos="fade-up" data-aos-duration="1000">
+      <div class="schedule-item"><span><strong>13.00</strong></span><span>🎉 Gerbang Dibuka</span></div>
+      <div class="schedule-item"><span><strong>14.30</strong></span><span>💃 Random Play Dance Arena</span></div>
+      <div class="schedule-item"><span><strong>16.30</strong></span><span>🎸 Local Band Power</span></div>
+      <div class="schedule-item"><span><strong>18.30</strong></span><span>🌟 Main Guest Star</span></div>
+      <div class="schedule-item"><span><strong>20.00</strong></span><span>🎊 Grand Finale & Hanabi</span></div>
+    </div>
+  </section>
+
+  <section id="ticket">
+    <div class="title" data-aos="fade-up">
+      <h2 class="text-neon-gradient">Akses Masuk</h2>
+      <p>Pilih paket pengalaman terbaikmu.</p>
+    </div>
+    <div class="ticket-container">
+      <div class="ticket glass" data-aos="flip-left" data-aos-delay="100">
+        <div>
+          <h3>Pass Regular</h3>
+          <div class="price">Rp 25k</div>
+          <p>Akses penuh ke seluruh area festival dan panggung *performance* sepanjang hari.</p>
+        </div>
+        <a href="https://wa.me/6288224454894" class="btn btn-secondary">Beli Pass</a>
+      </div>
+      <div class="ticket glass bundle-highlight" data-aos="flip-right" data-aos-delay="300">
+        <div>
+          <div
+            style="background:#ff4fd8; color:white; padding:4px 15px; border-radius:50px; font-size:11px; display:inline-block; margin-bottom:15px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">
+            Pilihan Favorit</div>
+          <h3>MCD Bundle</h3>
+          <div class="price">Rp 46k</div>
+          <p>Semua benefit Pass Regular + Paket Makan Hemat & Praktis dari McDonald's.</p>
+        </div>
+        <a href="https://wa.me/6288224454894" class="btn">Ambil Bundle</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="instagram">
+    <div class="title" data-aos="fade-up">
+      <h2 class="text-neon-gradient">Instagram Feed</h2>
+      <p>Ikuti update terbaru di <a href="https://www.instagram.com/nerokufest?igsh=NHBtYmN3OXpwZmIx" target="_blank"
+          style="color: #ff4fd8; text-decoration: none; font-weight: bold;">@nerokufest</a></p>
+    </div>
+
+    <div class="ig-grid">
+      <div class="ig-item" data-aos="zoom-in" data-aos-delay="100">
+        <a href="https://www.instagram.com/p/DYJL8k7CcAp/?img_index=1" target="_blank">
+          <img src="https://www.instagram.com/p/DYJL8k7CcAp/media/?size=l"
+            onerror="this.src='https://via.placeholder.com/500?text=Neroku+Fest'">
+        </a>
+      </div>
+      <div class="ig-item" data-aos="zoom-in" data-aos-delay="200">
+        <a href="URL_POSTINGAN_IG_2" target="_blank">
+          <img src="https://www.instagram.com/p/KODE_POSTINGAN_2/media/?size=l"
+            onerror="this.src='https://via.placeholder.com/500?text=Neroku+Fest'">
+        </a>
+      </div>
+      <div class="ig-item" data-aos="zoom-in" data-aos-delay="300">
+        <a href="URL_POSTINGAN_IG_3" target="_blank">
+          <img src="https://www.instagram.com/p/KODE_POSTINGAN_3/media/?size=l"
+            onerror="this.src='https://via.placeholder.com/500?text=Neroku+Fest'">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="location">
+    <div class="title" data-aos="fade-up">
+      <h2 class="text-neon-gradient">Titik Temu</h2>
+      <p>Pusat energi Neroku di kota Bandung.</p>
+    </div>
+    <div class="venue-container glass" data-aos="zoom-in-up">
+      <div class="venue-info">
+        <h3>Yogya Kepatihan</h3>
+        <p>Lantai 5 (Area Food Court & Game Master).<br>Jl. Kepatihan No.11-17, Kota Bandung.</p>
+        <div><a href="https://maps.app.goo.gl/eujdXFXu2TtGLH7r7" target="_blank" class="btn btn-secondary">Buka Peta</a>
+        </div>
+      </div>
+      <div class="map-responsive">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7228150367555!2d107.60323567475709!3d-6.923700893076016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e62685abd5f1%3A0xa76aa16e497e86f7!2sYOGYA%20%E2%80%A2%20Grand%20Kepatihan!5e0!3m2!1sen!2sid!4v1778761182108!5m2!1sen!2sid"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 NEROKU FEST SYNDICATE — Crafted for Cyber Neon Experience ✨
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Inisialisasi AOS (Animasi saat scroll)
+    AOS.init({
+      duration: 1000, // Durasi animasi 1 detik
+      once: true,     // Animasi hanya jalan sekali saat scroll
+    });
+
+    // COUNTDOWN SCRIPT
+    const eventDate = new Date('June 14, 2026 13:00:00').getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      if (distance < 0) {
+        document.getElementById('countdown').innerHTML = "<h3 style='color:#00d4ff; font-size:20px;'>🎉 AREA FESTIVAL TELAH DIBUKA!</h3>";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = days.toString().padStart(2, '0');
+      document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // INTRO & MUSIC SCRIPT
+    function startExperience() {
+      const audio = document.getElementById('myAudio');
+      audio.play().then(() => { audio.volume = 0.5; }).catch(e => console.log("Audio blocked"));
+
+      const overlay = document.getElementById('music-overlay');
+      overlay.style.opacity = '0';
+      overlay.style.transform = 'scale(1.1)';
+      setTimeout(() => { overlay.style.display = 'none'; }, 1000);
+    }
+  </script>
+
+</body>
+
+</html>
