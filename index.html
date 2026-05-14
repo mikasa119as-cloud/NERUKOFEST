@@ -492,6 +492,99 @@
       text-shadow: 0 0 20px #ff4fd8;
     }
 
+    /* -----------------------------------------------------------
+       4. RESPONSIVE OPTIMIZATION (MOBILE & TABLET)
+       ----------------------------------------------------------- */
+    @media (max-width: 768px) {
+      /* Navigasi: Ubah menjadi fleksibel agar tidak hilang */
+      nav {
+        padding: 15px 5%;
+      }
+
+      nav ul {
+        display: flex; /* Aktifkan kembali menu */
+        gap: 12px;
+      }
+
+      nav ul li a {
+        font-size: 11px; /* Kecilkan teks agar muat satu baris */
+      }
+
+      /* Section Padding */
+      section {
+        padding: 60px 20px;
+      }
+
+      /* Hero Title: Pastikan teks tidak terlalu besar */
+      .hero h1 {
+        font-size: 45px;
+        line-height: 1.2;
+      }
+
+      /* Countdown: Sesuaikan ukuran kotak timer */
+      .countdown-timer {
+        gap: 8px;
+      }
+
+      .time-unit {
+        min-width: 65px;
+        padding: 10px 5px;
+      }
+
+      /* Schedule: Buat teks rundown lebih rapat */
+      .schedule-item {
+        padding: 15px;
+        flex-direction: column; /* Tumpuk jam di atas judul acara */
+        align-items: flex-start;
+        gap: 5px;
+      }
+
+      .schedule-item strong {
+        font-size: 16px;
+      }
+
+      /* Venue/Location: Buat menjadi satu kolom */
+      .venue-container {
+        grid-template-columns: 1fr;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .map-responsive {
+        padding-bottom: 80%; /* Beri ruang lebih untuk peta di HP */
+      }
+
+      /* Instagram Grid: Pastikan 2 kolom di HP */
+      .ig-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      /* Music Overlay */
+      #music-overlay h2 {
+        font-size: 28px;
+        letter-spacing: 4px;
+      }
+    }
+
+    /* Extra Small Screen (HP Kecil) */
+    @media (max-width: 480px) {
+      nav ul {
+        gap: 8px;
+      }
+      
+      nav h2 {
+        font-size: 16px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+      
+      .ticket {
+        padding: 30px 20px;
+      }
+    }
+
     @media (max-width: 900px) {
       .venue-container {
         grid-template-columns: 1fr;
