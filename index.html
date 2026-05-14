@@ -497,6 +497,12 @@
        ----------------------------------------------------------- */
     @media (max-width: 768px) {
       /* Navigasi: Ubah menjadi fleksibel agar tidak hilang */
+      html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
       nav {
         padding: 15px 5%;
       }
@@ -586,6 +592,12 @@
     }
 
     @media (max-width: 900px) {
+      html,
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
       .venue-container {
         grid-template-columns: 1fr;
         text-align: center;
